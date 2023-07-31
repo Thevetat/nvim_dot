@@ -1,0 +1,13 @@
+{
+  "name": "d2lang",
+  "version": "1.0.0",
+  "description": "D2Lang Code Snippets",
+  "contributes": {
+    "snippets": [
+      {
+        "language": "d2",
+        "path": "./d2.json"
+      }
+    ]
+  }
+}

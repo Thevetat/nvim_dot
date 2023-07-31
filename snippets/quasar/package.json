@@ -1,0 +1,41 @@
+{
+  "name": "quasar",
+  "version": "1.0.0",
+  "description": "Quasar Code Snippets",
+  "contributes": {
+    "snippets": [
+      {
+        "language": "javascript",
+        "path": "./quasar.json"
+      },
+      {
+        "language": "typescript",
+        "path": "./quasar.json"
+      },
+      {
+        "language": "vue",
+        "path": "./quasar.json"
+      },
+      {
+        "language": "css",
+        "path": "./quasar.json"
+      },
+      {
+        "language": "scss",
+        "path": "./quasar.json"
+      },
+      {
+        "language": "sass",
+        "path": "./quasar.json"
+      },
+      {
+        "language": "html",
+        "path": "./quasar.json"
+      },
+      {
+        "language": "vue-html",
+        "path": "./quasar.json"
+      }
+    ]
+  }
+}

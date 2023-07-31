@@ -1,0 +1,13 @@
+{
+  "name": "lua",
+  "version": "1.0.0",
+  "description": "Lua Code Snippets",
+  "contributes": {
+    "snippets": [
+      {
+        "language": "lua",
+        "path": "./lua.json"
+      }
+    ]
+  }
+}

@@ -1,0 +1,43 @@
+{
+    "Jira Ticket": {
+        "prefix": "jira",
+        "body": [
+            "# [[${1:fileName}]]",
+            "",
+            "---",
+            "## Ticket Description:",
+            "${3:Start}",
+            "",
+            "## Steps To Achieve:",
+            "",
+            "## Issues Experience:",
+            "",
+            "## Notes:",
+            "",
+            "---",
+            "",
+            "",
+            "### What Was Easy:",
+            "",
+            "### What Caught Me Out:",
+            "",
+            "### What Was Looked Up:",
+            "",
+            "### Interesting Things Learned:",
+            "",
+            "### Final Thoughts:",
+            "",
+            "---",
+            "",
+            "- Tags: ",
+            "\t- #🖥️",
+            "- Reference:",
+            "\t- ",
+            "- Related:",
+            "\t- ",
+            "- Date:",
+            "\t- [[${2:YYYY-MM-DD}]]"
+        ],
+        "description": "Jira Ticket Template"
+    }
+}

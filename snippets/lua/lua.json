@@ -1,0 +1,52 @@
+{
+    "Pcall Import": {
+        "prefix": "pcimp",
+        "body": [
+            "local present, ${1:module} = pcall(require, '${1:module }')",
+            "",
+            "if not present then",
+            "\treturn",
+            "end",
+            "",
+            "",
+            "local opts = {",
+            "",
+            "}",
+            "",
+            "${1:module}.setup(opts)"
+        ],
+        "description": "Protected Import and Setup"
+    },
+    "Lua Export": {
+        "prefix": "lex",
+        "body": [
+            "local M = {}",
+            "",
+            "M.${1:name} = {",
+            "",
+            "}",
+            "",
+            "return M",
+            "",
+            ""
+        ],
+        "description": "Export Boilerplate"
+    },
+    "Lazy Plugin Import": {
+        "prefix": "lpi",
+        "body": [
+            "local M = {",
+            "\t'${1:windwp/nvim-autopairs}',",
+            "\topts = {",
+            "\t\t${2:opts}",
+            "\t},",
+            "\tconfig = function(_, opts)",
+            "\t\trequire('nvim-autopairs').setup(opts)",
+            "\tend,",
+            "}",
+            "",
+            "return M"
+        ],
+        "description": "Default Plugin Export for Lazy"
+    }
+}

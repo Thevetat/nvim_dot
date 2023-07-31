@@ -1,0 +1,13 @@
+{
+  "name": "markdown",
+  "version": "1.0.0",
+  "description": "Markdown code snippets",
+  "contributes": {
+    "snippets": [
+      {
+        "language": "markdown",
+        "path": "./md.json"
+      }
+    ]
+  }
+}
