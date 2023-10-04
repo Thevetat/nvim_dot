@@ -13,4 +13,7 @@ return {
     keys = { { "<leader>cs", "<cmd>SymbolsOutline<cr>", desc = "Symbols Outline" } },
     config = true,
   },
+  {
+    "sago35/tinygo.vim",
+  },
 }
