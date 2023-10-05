@@ -19,10 +19,10 @@ local options = {
 
   -- Indenting --
   expandtab = true,
-  shiftwidth = 4,
+  shiftwidth = 2,
   smartindent = true,
-  tabstop = 4,
-  softtabstop = 4,
+  tabstop = 2,
+  softtabstop = 2,
 
   -- Visual --
   number = true, -- TODO: Test if number is needed
