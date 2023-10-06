@@ -6,7 +6,7 @@ return {
     dependencies = {
       { "nvim-treesitter/playground", cmd = "TSPlaygroundToggle" },
 
-      { "https://gitlab.com/HiPhish/nvim-ts-rainbow2" },
+      -- { "https://gitlab.com/HiPhish/nvim-ts-rainbow2" },
       { "nvim-treesitter/nvim-treesitter-textobjects" },
 
       {
@@ -112,16 +112,25 @@ return {
           },
         },
 
-        rainbow = {
-          enable = true,
-          -- Which query to use for finding delimiters
-          query = {
-            "rainbow-parens", -- parentheses by default
-            html = "rainbow-tags", -- tags for html
-          },
-          -- Highlight the entire buffer all at once
-          strategy = require("ts-rainbow.strategy.global"),
-        },
+        -- rainbow = {
+        --   enable = false,
+        --   -- Which query to use for finding delimiters
+        --   query = {
+        --     "rainbow-parens", -- parentheses by default
+        --     html = "rainbow-tags", -- tags for html
+        --   },
+        --   hlgroups = {
+        --     "TSRainbowCyan",
+        --     "TSRainbowBlue",
+        --     "TSRainbowYellow",
+        --     "TSRainbowGreen",
+        --     "TSRainbowRed",
+        --     "TSRainbowOrange",
+        --     "TSRainbowViolet",
+        --   },
+        --   -- Highlight the entire buffer all at once
+        --   strategy = require("ts-rainbow.strategy.global"),
+        -- },
 
         autotag = {
           enable = true,
