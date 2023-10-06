@@ -4,101 +4,148 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     dependencies = {
+      { "nvim-treesitter/playground", cmd = "TSPlaygroundToggle" },
+
+      { "https://gitlab.com/HiPhish/nvim-ts-rainbow2" },
+      { "nvim-treesitter/nvim-treesitter-textobjects" },
+
       {
         "JoosepAlviste/nvim-ts-context-commentstring",
-        event = "BufReadPre",
+        ft = { "vue" },
       },
-      -- {
-      --   "p00f/nvim-ts-rainbow",
-      --   event = "BufReadPre",
-      -- },
+
       {
-        "nvim-treesitter/nvim-treesitter-textobjects",
-        event = "BufReadPre",
-      },
-    },
-    opts = {
-      autopairs = {
-        enable = true,
-      },
-
-      autotag = {
-        enable = true,
-        filetypes = server_list.ts_autotag_filetypes,
-      },
-
-      ensure_installed = server_list.ts_ensure_installed,
-
-      highlight = {
-        enable = true,
-        additional_vim_regex_highlighting = { "markdown" },
-      },
-
-      context_commentstring = {
-        enable = true,
-        enable_autocmd = false,
-        config = {
-          typescript = "// %s",
-          css = "/* %s */",
-          scss = "/* %s */",
-          html = "<!-- %s -->",
-          svelte = "<!-- %s -->",
-          vue = "<!-- %s -->",
-          json = "",
+        "windwp/nvim-ts-autotag",
+        opts = {
+          enable_close_on_slash = false,
+          filetypes = {
+            "html",
+            "javascript",
+            "javascriptreact",
+            "typescript",
+            "typescriptreact",
+            "vue",
+            "xml",
+          },
         },
       },
 
-      matchup = {
-        enable = true,
+      {
+        "windwp/nvim-autopairs",
+        config = true,
       },
-
-      playground = {
-        enable = true,
-        disable = {},
-        updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
-        persist_queries = true, -- Whether the query persists across vim sessions
-        keybindings = {
-          toggle_query_editor = "o",
-          toggle_hl_groups = "i",
-          toggle_injected_languages = "t",
-          toggle_anonymous_nodes = "a",
-          toggle_language_display = "I",
-          focus_language = "f",
-          unfocus_language = "F",
-          update = "R",
-          goto_node = "<cr>",
-          show_help = "?",
-        },
-      },
-
-      -- rainbow = {
-      --   enable = true,
-      --   extended_mode = true,
-      --   colors = {
-      --     "#c678dd",
-      --     "#61afef",
-      --     "#43ac80",
-      --     "#e5c07b",
-      --     "#56b6c2",
-      --     "#d074ec",
-      --     "#ffd700",
-      --   },
-      --   max_file_lines = 1000,
-      -- },
     },
-  },
+    config = function()
+      vim.opt.foldmethod = "expr" -- use function to determine folds
+      vim.opt.foldexpr = "nvim_treesitter#foldexpr()" -- use treesitter for folding
 
-  {
-    "windwp/nvim-ts-autotag",
-    config = true,
-    event = "BufReadPre",
-  },
+      require("nvim-treesitter.configs").setup({
+        -- either "all" or a list of languages
+        ensure_installed = "all",
+        autopairs = {
+          enable = true,
+        },
+        highlight = {
+          -- false will disable the whole extension
+          enable = true,
+          additional_vim_regex_highlighting = { "markdown" },
+        },
+        indent = {
+          enable = false, -- buggy :/
+        },
+        -- custom text objects
+        textobjects = {
+          -- change/delete/select in function or class
+          select = {
+            enable = true,
+            lookahead = true,
+            keymaps = {
+              ["af"] = "@function.outer",
+              ["if"] = "@function.inner",
+              ["ac"] = "@class.outer",
+              ["ic"] = "@class.inner",
+            },
+          },
+          -- easily move to next function/class
+          move = {
+            enable = true,
+            set_jumps = true, -- track in jumplist (<C-o>, <C-i>)
+            goto_next_start = {
+              ["]["] = "@function.outer",
+              [")("] = "@class.outer",
+            },
+            goto_next_end = {
+              ["]]"] = "@function.outer",
+              ["))"] = "@class.outer",
+            },
+            goto_previous_start = {
+              ["[["] = "@function.outer",
+              ["(("] = "@class.outer",
+            },
+            goto_previous_end = {
+              ["[]"] = "@function.outer",
+              ["()"] = "@class.outer",
+            },
+          },
+          -- peek definitions from LSP
+          lsp_interop = {
+            enable = true,
+            border = "single",
+            peek_definition_code = {
+              ["<Leader>pf"] = "@function.outer",
+              ["<Leader>pc"] = "@class.outer",
+            },
+          },
+          swap = {
+            enable = true,
+            swap_next = {
+              ["<Leader>l"] = "@parameter.inner",
+            },
+            swap_previous = {
+              ["<Leader>h"] = "@parameter.outer",
+            },
+          },
+        },
+        context_commentstring = {
+          enable = true,
+          enable_autocmd = false, -- Comment.nvim takes care of this automatically
+        },
 
-  {
-    "windwp/nvim-autopairs",
-    config = true,
-    event = "BufReadPre",
-  },
+        playground = {
+          enable = true,
+          disable = {},
+          updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
+          persist_queries = true, -- Whether the query persists across vim sessions
+          keybindings = {
+            toggle_query_editor = "o",
+            toggle_hl_groups = "i",
+            toggle_injected_languages = "t",
+            toggle_anonymous_nodes = "a",
+            toggle_language_display = "I",
+            focus_language = "f",
+            unfocus_language = "F",
+            update = "R",
+            goto_node = "<cr>",
+            show_help = "?",
+          },
+        },
 
-  { "nvim-treesitter/playground", cmd = "TSPlaygroundToggle" },
+        rainbow = {
+          enable = true,
+          -- Which query to use for finding delimiters
+          query = {
+            "rainbow-parens", -- parentheses by default
+            html = "rainbow-tags", -- tags for html
+          },
+          -- Highlight the entire buffer all at once
+          strategy = require("ts-rainbow.strategy.global"),
+        },
+
+        autotag = {
+          enable = true,
+          filetypes = { "html", "vue" },
+        },
+      })
+    end,
+  },
 }

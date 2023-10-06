@@ -18,11 +18,13 @@ local options = {
   splitright = true,
 
   -- Indenting --
-  expandtab = true,
-  shiftwidth = 2,
+  autoindent = true,
   smartindent = true,
-  tabstop = 2,
-  softtabstop = 2,
+  smarttab = true,
+  expandtab = true,
+  shiftwidth = 4,
+  tabstop = 4,
+  softtabstop = 4,
 
   -- Visual --
   number = true, -- TODO: Test if number is needed

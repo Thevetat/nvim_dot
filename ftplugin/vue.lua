@@ -1,18 +1,38 @@
-local map = require("functions.ftutil").map
+vim.bo.shiftwidth = 2
+vim.bo.tabstop = 2
+vim.bo.softtabstop = 2
 
--- CSS classes usually have dashes in them, so the whole class name should be
--- considered as a word
-vim.opt_local.iskeyword:append("-")
+-- special commenting for vue SFCs
+require("Comment").setup({
+  pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
+})
 
--- Mappings for navigating blocks
-map("n", "]]", function()
-  vim.fn.search("^<(template<bar>script<bar>style)", "W")
-end)
-map("n", "[[", function()
-  vim.fn.search("^<(template<bar>script<bar>style)", "bW")
-end)
+--[[
+Mappings shamelessly stolen from medium article:
+https://medium.com/scoro-engineering/5-smart-mini-snippets-for-making-text-editing-more-fun-in-neovim-b55ffb96325a
+--]]
+-- automatically add "" when adding attributes in vue
+vim.keymap.set("i", "=", function()
+  -- The cursor location does not give us the correct node in this case, so we
+  -- need to get the node to the left of the cursor
+  local cursor = vim.api.nvim_win_get_cursor(0)
+  local left_of_cursor_range = { cursor[1] - 1, cursor[2] - 1 }
 
--- Automatically end a self-closing tag when pressing /
+  local node = vim.treesitter.get_node({ pos = left_of_cursor_range })
+  local nodes_active_in = {
+    "attribute_name",
+    "directive_argument",
+    "directive_name",
+  }
+  if not node or not vim.tbl_contains(nodes_active_in, node:type()) then
+    -- The cursor is not on an attribute node
+    return "="
+  end
+
+  return '=""<left>'
+end, { expr = true, buffer = true })
+
+-- auto close tag when I type `/` inside a tag
 vim.keymap.set("i", "/", function()
   local node = vim.treesitter.get_node()
   if not node then
@@ -36,24 +56,16 @@ vim.keymap.set("i", "/", function()
     local char_at_cursor = vim.fn.strcharpart(vim.fn.strpart(vim.fn.getline("."), vim.fn.col(".") - 2), 0, 1)
     local already_have_space = char_at_cursor == " "
 
+    -- We can also automatically add a space if there isn't one already
     return already_have_space and "/>" or " />"
   end
 
   return "/"
 end, { expr = true, buffer = true })
 
--- Inside an attribute: <button type| pressing = -> <button type="|"
-vim.keymap.set("i", "=", function()
-  local cursor = vim.api.nvim_win_get_cursor(0)
-  local left_of_cursor_range = { cursor[1] - 1, cursor[2] - 1 }
-
-  -- The cursor location does not give us the correct node in this case, so we
-  -- need to get the node to the left of the cursor
-  local node = vim.treesitter.get_node({ pos = left_of_cursor_range })
-  local nodes_active_in = { "attribute_name", "directive_argument", "directive_name" }
-  if not node or not vim.tbl_contains(nodes_active_in, node:type()) then
-    return "="
-  end
-
-  return '=""<left>'
-end, { expr = true, buffer = true })
+-- automatically turn {{| into {{ | }} in vue templates
+local Rule = require("nvim-autopairs.rule")
+local ts_conds = require("nvim-autopairs.ts-conds")
+require("nvim-autopairs").add_rules({
+  Rule("{{", "  }", "vue"):set_end_pair_length(2):with_pair(ts_conds.is_ts_node("text")),
+})

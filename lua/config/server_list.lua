@@ -41,7 +41,6 @@ M.ts_ensure_installed = {
   "bash",
   "c",
   "cmake",
-  -- "comment", -- comments are slowing down TS bigtime, so disable for now
   "cpp",
   "css",
   "diff",
