@@ -11,28 +11,16 @@ return {
 
       {
         "JoosepAlviste/nvim-ts-context-commentstring",
-        ft = { "vue" },
+        ft = { "vue", "html" },
       },
 
       {
         "windwp/nvim-ts-autotag",
-        opts = {
-          enable_close_on_slash = false,
-          filetypes = {
-            "html",
-            "javascript",
-            "javascriptreact",
-            "typescript",
-            "typescriptreact",
-            "vue",
-            "xml",
-          },
-        },
+        ft = { "vue", "html" },
       },
 
       {
         "windwp/nvim-autopairs",
-        config = true,
       },
     },
     config = function()
@@ -40,22 +28,18 @@ return {
       vim.opt.foldexpr = "nvim_treesitter#foldexpr()" -- use treesitter for folding
 
       require("nvim-treesitter.configs").setup({
-        -- either "all" or a list of languages
-        ensure_installed = "all",
+        ensure_installed = server_list.ts_ensure_installed,
         autopairs = {
           enable = true,
         },
         highlight = {
-          -- false will disable the whole extension
           enable = true,
           additional_vim_regex_highlighting = { "markdown" },
         },
         indent = {
           enable = false, -- buggy :/
         },
-        -- custom text objects
         textobjects = {
-          -- change/delete/select in function or class
           select = {
             enable = true,
             lookahead = true,
@@ -66,7 +50,6 @@ return {
               ["ic"] = "@class.inner",
             },
           },
-          -- easily move to next function/class
           move = {
             enable = true,
             set_jumps = true, -- track in jumplist (<C-o>, <C-i>)
@@ -87,7 +70,6 @@ return {
               ["()"] = "@class.outer",
             },
           },
-          -- peek definitions from LSP
           lsp_interop = {
             enable = true,
             border = "single",
