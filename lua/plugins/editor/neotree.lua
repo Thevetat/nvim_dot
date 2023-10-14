@@ -22,7 +22,9 @@ return {
       filesystem = {
         visible = false,
         bind_to_cwd = false,
-        follow_current_file = true,
+        follow_current_file = {
+          enabled = true,
+        },
         hide_dotfiles = false,
         hide_gitignored = false,
         hide_hidden = false,
