@@ -184,7 +184,7 @@ return {
       })
 
       require("luasnip.loaders.from_vscode").lazy_load({ paths = { "./snippets/rust" } })
-      require("luasnip.loaders.from_vscode").lazy_load({ paths = { "./snippets/quasar" } })
+      require("luasnip.loaders.from_vscode").lazy_load({ paths = { "./snippets/vue" } })
       require("luasnip.loaders.from_vscode").lazy_load({ paths = { "./snippets/lua" } })
       require("luasnip.loaders.from_vscode").lazy_load({ paths = { "./snippets/d2" } })
       require("luasnip.loaders.from_vscode").lazy_load({ paths = { "./snippets/go" } })
