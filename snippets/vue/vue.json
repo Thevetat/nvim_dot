@@ -1,0 +1,552 @@
+{
+    "Log Property": {
+        "prefix": "clog",
+        "body": [
+            "console.log(`${1:}: ${${1:}}`)"
+        ],
+        "description": "quick console log"
+    },
+    "Log 2 Property": {
+        "prefix": "cclog",
+        "body": [
+            "console.log(`${${1:}}: ${${2:}}`)"
+        ],
+        "description": "quick console log"
+    },
+    "Picsum Link": {
+        "prefix": "pic",
+        "body": [
+            "https://picsum.photos/${1:100}/${2:100}"
+        ],
+        "description": "Inserts a Picsum Link for fast prototyping"
+    },
+    "useVModel form Proxy": {
+        "prefix": "proxy",
+        "body": [
+            "import { useVModel } from '@vueuse/core'",
+            "",
+            "const props = defineProps({",
+            "\tmodelValue: {",
+            "\t\trequired: true,",
+            "\t\ttype: Object,",
+            "\t},",
+            "})",
+            "",
+            "const emit = defineEmits(['update:modelValue'])",
+            "",
+            "const form = useVModel(props, 'modelValue', emit)"
+        ],
+        "description": "Inserts a useVModel proxy from vueUse"
+    },
+    "TS useVModel form Proxy": {
+        "prefix": "tproxy",
+        "body": [
+            "import { useVModel } from '@vueuse/core'",
+            "",
+            "interface Props {",
+            "\t${1:modelValue}: ${2:Record<string, unknown>}",
+            "}",
+            "",
+            "const props = defineProps<Props>()",
+            "",
+            "const emit = defineEmits<{",
+            "\t(event: 'update:${1:modelValue}', payload: ${2:Record<string, unknown>}): void",
+            "}>()",
+            "",
+            "const ${1:modelValue} = useVModel(props, '${1:modelValue}', emit)"
+        ],
+        "description": "Inserts a useVModel proxy from vueUse"
+    },
+    "Define Props": {
+        "prefix": "dpro",
+        "body": [
+            "const { ${1:propName} } = defineProps<{",
+            "  ${1:propName}: ${2:type}",
+            "}>()"
+        ],
+        "description": "defineProps macro"
+    },
+    "Single Prop": {
+        "prefix": "pro",
+        "body": [
+            "${1:name}: {",
+            "\trequired: ${2:true},",
+            "\ttype: ${3:Object},",
+            "},"
+        ],
+        "description": "Single Prop"
+    },
+    "Try Catch Finally": {
+        "prefix": "tcf",
+        "body": [
+            "try {",
+            "",
+            "} catch (err){",
+            "\terror(file, '${1:functionName}', 'Unexpected error: ' + err)",
+            "} finally {",
+            "",
+            "}"
+        ],
+        "description": "Try Catch Finally"
+    },
+    "Typescript Define Props": {
+        "prefix": "tdpro",
+        "body": [
+            "interface Props {",
+            "\t${1:modelValue}: ${2:Record<string, unknown>}",
+            "}",
+            "",
+            "const props = defineProps<Props>()"
+        ],
+        "description": "Typescript Define Props"
+    },
+    "Typescript Define Props With Defaults": {
+        "prefix": "tdprod",
+        "body": [
+            "interface Props {",
+            "\t${1:name}?: ${2:string}",
+            "}",
+            "",
+            "const props = withDefaults(defineProps<Props>(), {",
+            "\t ${1:name}: ''",
+            "})"
+        ],
+        "description": "Typescript Define Props with Defaults"
+    },
+    "Typescript Define Emit": {
+        "prefix": "tdem",
+        "body": [
+            "const emit = defineEmits(['${1:emitName}'])"
+        ],
+        "description": "Typescript Define emit"
+    },
+    "Vue Base": {
+        "prefix": "vbase",
+        "body": [
+            "<template>",
+            "\t\t${1:Words}",
+            "</template>",
+            "",
+            "<script setup lang=\"ts\">",
+            "",
+            "</script>",
+            "",
+            "<style lang=\"scss\" scoped>",
+            "",
+            "</style>"
+        ],
+        "description": "Base Vue Component"
+    },
+    "Define Model": {
+        "prefix": "dmod",
+        "body": [
+            "const ${1:name} = defineModel<${2:type}>('${1:name}', { required: true })"
+        ],
+        "description": "Define Model Macro"
+    },
+    "Reactive Function": {
+        "prefix": "rvf",
+        "body": [
+            "import { computed, Ref } from 'vue'",
+            "",
+            "export function ${1:genColumnData}(${2:tableName}: ${3:Ref<string>}) {",
+            "\treturn computed(() => {",
+            "\t\tconst ${4:fileData} = ${2:tableName}",
+            "",
+            "\t\treturn ${4:fileData}",
+            "\t})",
+            "}"
+        ],
+        "description": "Reactive Vue Function"
+    },
+    "Pinia-Orm Model": {
+        "prefix": "pom",
+        "body": [
+            "import { Model, Str, Uid } from 'pinia-orm'",
+            "",
+            "export default class ${1:} extends Model {",
+            "\tstatic entity = '${1:}s'",
+            "\tstatic primaryKey = 'id'",
+            "",
+            "${2:}",
+            "}"
+        ],
+        "description": "Inserts a Base file for Pinia-ORM Model"
+    },
+    "Pinia-Orm Decorator Model": {
+        "prefix": "podm",
+        "body": [
+            "import { Model, Str, HasMany, Uid } from 'pinia-orm'",
+            "",
+            "class ${1:} extends Model {",
+            "\tstatic entity = '${1:}s'",
+            "",
+            "\t@Uid()",
+            "\t\tid!: string",
+            "",
+            "\t@Str('')",
+            "\t\tname!: string",
+            "",
+            "}"
+        ],
+        "description": "Inserts a Base file for Pinia-ORM Decorator Model"
+    },
+    "Pinia-ORM Uid": {
+        "prefix": "puid",
+        "body": [
+            "@Uid()",
+            "\t${1:}: string${2:}"
+        ],
+        "description": "Inserts a UID model for Pinia-ORM"
+    },
+    "Pinia Store": {
+        "prefix": "pstore",
+        "body": [
+            "import { defineStore } from 'pinia'",
+            "",
+            "export const use${1:storeName}Store = defineStore('${1:storeName}', () => {",
+            "  const ${2:data} = ref()",
+            "",
+            "  return {",
+            "\t${2:data},",
+            "  }",
+            "})"
+        ]
+    },
+    "Pinia-ORM String": {
+        "prefix": "pstr",
+        "body": [
+            "@Str(null, { nullable: true })",
+            "\t${1:}: string | null${2:}"
+        ],
+        "description": "Inserts a String model for Pinia-ORM"
+    },
+    "Pinia-ORM Number": {
+        "prefix": "pnum",
+        "body": [
+            "@Num(null, { nullable: true })",
+            "\t${1:}: number | null${2:}"
+        ],
+        "description": "Inserts a Number model for Pinia-ORM"
+    },
+    "Pinia-ORM Attr": {
+        "prefix": "pattr",
+        "body": [
+            "@Attr(null)",
+            "\t${1:}: ${2:} | null${3:}"
+        ],
+        "description": "Inserts a Attr model for Pinia-ORM"
+    },
+    "Pinia-ORM Has Many": {
+        "prefix": "phm",
+        "body": [
+            "@HasMany(() => ${1:}, '${2:}')",
+            "\t${1:}s!: ${1:}[]"
+        ],
+        "description": "Inserts a Has-Many model for Pinia-ORM"
+    },
+    "Pinia-ORM Has One": {
+        "prefix": "pho",
+        "body": [
+            "@HasOne(() => ${1:UpperCase}, '${3:owner}_id')",
+            "\t${2:LowerCase}!: ${1:UpperCase}"
+        ],
+        "description": "Inserts a Has-One model for Pinia-ORM"
+    },
+    "Pinia-ORM Belongs-To": {
+        "prefix": "pbt",
+        "body": [
+            "@Attr(null)",
+            "\t${2:}_id: string | null",
+            "",
+            "@BelongsTo(() => ${1:}, '${2:}_id')",
+            "\t${2:}! : ${1:} | null"
+        ],
+        "description": "Inserts a Belongs-To model for Pinia-ORM"
+    },
+    "Random Range": {
+        "prefix": "rrange",
+        "body": [
+            "Math.floor(Math.random() * (${1:max} - ${2:min}) + ${2:min})"
+        ],
+        "description": "Random Range"
+    },
+    "Inclusive Random Range": {
+        "prefix": "irrange",
+        "body": [
+            "Math.floor(Math.random() * (${1:max} - ${2:min} + 1) + ${2:min})"
+        ],
+        "description": "Inclusive Random Range"
+    },
+    "Electron Log": {
+        "prefix": "elog",
+        "body": [
+            "import { info, verbose, complete, warning } from './log'",
+            "const file = '${1:filename}'"
+        ],
+        "description": "import for logger"
+    },
+    "Log Warning": {
+        "prefix": "wlog",
+        "body": [
+            "warning(file, '${1:function}', `${2:message}: ${${3:value}}`)"
+        ],
+        "description": "warning log"
+    },
+    "Log complete": {
+        "prefix": "slog",
+        "body": [
+            "success(file, '${1:function}', `${2:message}: ${${3:value}}`)"
+        ],
+        "description": "complete log"
+    },
+    "Log info": {
+        "prefix": "ilog",
+        "body": [
+            "info(file, '${1:function}', `${2:message}: ${${3:value}}`)"
+        ],
+        "description": "info log"
+    },
+    "Log announce": {
+        "prefix": "alog",
+        "body": [
+            "announce(file, '${1:function}', `${2:message}: ${${3:value}}`)"
+        ],
+        "description": "announce log"
+    },
+    "Log error": {
+        "prefix": "erlog",
+        "body": [
+            "error(file, '${1:function}', `${2:message}: ${${3:value}}`)"
+        ],
+        "description": "error log"
+    },
+    "Log finished": {
+        "prefix": "flog",
+        "body": [
+            "finished(file, '${1:function}', `${2:message}: ${${3:value}}`)"
+        ],
+        "description": "error log"
+    },
+    "Log verbose": {
+        "prefix": "vlog",
+        "body": [
+            "verbose(file, '${1:function}', `${2:message}: ${${3:value}}`)"
+        ],
+        "description": "verbose log"
+    },
+    "IPC Channels API": {
+        "prefix": "ipcapi",
+        "body": [
+            "import IPC from '../src/IPC'",
+            "import { BrowserWindow, IpcMainEvent } from 'electron'",
+            "import { SendChannels } from '../types/InterProcessCommunication'",
+            "",
+            "const nameAPI = '${1:helloWorld}'",
+            "",
+            "// To Main Process",
+            "const validSendChannel: SendChannels = {",
+            "\t${2:requestHello},",
+            "}",
+            "",
+            "// From Main Process",
+            "const validReceiveChannel: string[] = ['${3:getHello}']",
+            "",
+            "const ${1:helloWorld} = new IPC({",
+            "\tnameAPI,",
+            "\tvalidSendChannel,",
+            "\tvalidReceiveChannel,",
+            "})",
+            "",
+            "export default ${1:helloWorld}",
+            "",
+            "function ${2:requestHello} (",
+            "\tmainWindow: BrowserWindow,",
+            "\tevent: IpcMainEvent,",
+            "\tmessage: string,",
+            ") {",
+            "\tconst ${4:result} = {",
+            "\t\ttname: 'John',",
+            "\t\tmessage: 'Hello',",
+            "\t\trendMess: message,",
+            "\t}",
+            "\tmainWindow.webContents.send('${3:getHello}', ${4:result})",
+            "}"
+        ],
+        "description": "IPC Channels API"
+    },
+    "Generator Function": {
+        "prefix": "genf",
+        "body": [
+            "import { pascalCase } from 'change-case'",
+            "import { singular } from 'pluralize'",
+            "import { makePluralPascalModelName } from 'src/utilities/composables/strings/makePluralPascalModelName'",
+            "import { computed, ComputedRef, Ref } from 'vue'",
+            "",
+            "export function gen${1:thingGenerating}Data(modelName: Ref<string>, list: ComputedRef<string[]>) {",
+            "\treturn computed(() => {",
+            "\t\tconst singularPascalModelName = singular(pascalCase(modelName.value))",
+            "\t\tconst pluralPascalModelName = makePluralPascalModelName(modelName.value)",
+            "\t\tconst fileData = `${2:textToGenerate}",
+            "",
+            "`",
+            "",
+            "return fileData",
+            "})",
+            "}"
+        ],
+        "description": "Generator function"
+    },
+    "Template String": {
+        "prefix": "temps",
+        "body": [
+            "${${1:words}}"
+        ],
+        "description": "Template String"
+    },
+    "Electron Plugin": {
+        "prefix": "eplug",
+        "body": [
+            "import IPC from 'src-electron/system/IPC/IPC'",
+            "import { app, BrowserWindow, IpcMainEvent } from 'electron'",
+            "import { NameAPI, SendChannels, ValidReceiveChannel } from 'src-electron/types/InterProcessCommunication'",
+            "import { PathsFromApp } from './types/PathsFromApp'",
+            "",
+            "const nameAPI: NameAPI = 'pathFromApp'",
+            "",
+            "const validSendChannel: SendChannels = {",
+            "  requestPathFromApp,",
+            "}",
+            "",
+            "const validReceiveChannel: ValidReceiveChannel = ['getPathFromApp']",
+            "",
+            "const pathFromApp = new IPC({",
+            "  nameAPI,",
+            "  validSendChannel,",
+            "  validReceiveChannel,",
+            "})",
+            "",
+            "export default pathFromApp",
+            "",
+            "async function requestPathFromApp(",
+            "  mainWindow: BrowserWindow,",
+            "  event: IpcMainEvent,",
+            "  location: PathsFromApp",
+            ") {",
+            "  mainWindow.webContents.send('getPathFromApp', app.getPath(location))",
+            "}",
+            ""
+        ]
+    },
+    "Docstring": {
+        "prefix": "docs",
+        "body": [
+            "/**",
+            " * ${1:Description}",
+            " *",
+            " * @param {${2:string}} ${3:msg} - ${4:The message you want to appear.} [ ${5:'This is a message'} ]",
+            " *",
+            " * @example ${6:Calling the API}",
+            " *",
+            " * ```ts",
+            " * ${7:const nameAPI = 'directoryFromUser'}",
+            " * ```",
+            " */"
+        ],
+        "description": "Generates a template docstring"
+    },
+    "Log TCF": {
+        "prefix": "ltcf",
+        "body": [
+            "import { success, error, finished } from '../log'",
+            "",
+            "const file = '${1:fileExists.ts}'",
+            "",
+            "export async function ${1:fileExists.ts}(): {",
+            "  try {",
+            "\tsuccess(file, '${1:fileExists.ts}', `${2: Success Message}`)",
+            "\treturn true",
+            "  } catch (err) {",
+            "\terror(file, '${1:fileExists.ts}', `Unable to ${3: Error Message}: ` + err)",
+            "\treturn false",
+            "  } finally {",
+            "\tfinished(file, '${1:fileExists.ts}', 'All Actions Complete')",
+            "  }",
+            "}"
+        ],
+        "description": "Logged Try Catch Finally"
+    },
+    "New CVA": {
+        "prefix": "cva",
+        "body": [
+            "const ${1:className} = computed(() => {",
+            "  return cva('', {",
+            "\tvariants: {},",
+            "\tcompoundVariants: {},",
+            "\tdefaultVariants: {},",
+            "  })({",
+            "\t${2:variantName} ",
+            "\t})",
+            "})",
+            ""
+        ],
+        "description": "New CVA Style"
+    },
+    "Generator": {
+        "prefix": "ngen",
+        "body": [
+            "import type { UserModel } from '../../types/UserModel'",
+            "",
+            "export function ${1:genName}(model: UserModel) {",
+            "  return computed(() => {",
+            "\t\tconst modelRef = ref(model)",
+            "\t\tconst names = genModelNamePackage(modelRef).value",
+            "\t\treturn `import type ${names.modelPascalSingular} from '../${names.modelPascalSingular}'",
+            "",
+            "`",
+            "  })",
+            "}",
+            ""
+        ]
+    },
+    "New Theme Color": {
+        "prefix": "newtheme",
+        "body": [
+            "${1:colorName}: {",
+            "  50: '',",
+            "  100: '',",
+            "  200: '',",
+            "  300: '',",
+            "  400: '',",
+            "  500: '',",
+            "  600: '',",
+            "  700: '',",
+            "  800: '',",
+            "  900: '',",
+            "}"
+        ],
+        "description": "Create new UnoCss Config Theme"
+    },
+    "Transition": {
+        "prefix": "ntran",
+        "body": [
+            "<Transition",
+            "  tag=\"div\"",
+            "  enter-from-class=\"\"",
+            "  enter-active-class=\"\"",
+            "  leave-active-class=\"\"",
+            "  leave-to-class=\"\"",
+            ">",
+            "  ${1:content}",
+            "</Transition>"
+        ],
+        "description": "New Blank Vue Transition"
+    },
+    "Pre Tag": {
+        "prefix": "ptag",
+        "body": [
+            "<pre text-start> {{ ${1:content} }} </pre>"
+        ],
+        "description": "New Blank Vue Transition"
+    }
+}

@@ -1,0 +1,73 @@
+{
+    "name": "vue",
+    "version": "1.0.0",
+    "description": "Vue Code Snippets",
+    "contributes": {
+        "snippets": [
+            {
+                "language": "javascript",
+                "path": "./quasar.json"
+            },
+            {
+                "language": "typescript",
+                "path": "./quasar.json"
+            },
+            {
+                "language": "vue",
+                "path": "./quasar.json"
+            },
+            {
+                "language": "css",
+                "path": "./quasar.json"
+            },
+            {
+                "language": "scss",
+                "path": "./quasar.json"
+            },
+            {
+                "language": "sass",
+                "path": "./quasar.json"
+            },
+            {
+                "language": "html",
+                "path": "./quasar.json"
+            },
+            {
+                "language": "vue-html",
+                "path": "./quasar.json"
+            },
+            {
+                "language": "javascript",
+                "path": "./vue.json"
+            },
+            {
+                "language": "typescript",
+                "path": "./vue.json"
+            },
+            {
+                "language": "vue",
+                "path": "./vue.json"
+            },
+            {
+                "language": "css",
+                "path": "./vue.json"
+            },
+            {
+                "language": "scss",
+                "path": "./vue.json"
+            },
+            {
+                "language": "sass",
+                "path": "./vue.json"
+            },
+            {
+                "language": "html",
+                "path": "./vue.json"
+            },
+            {
+                "language": "vue-html",
+                "path": "./vue.json"
+            }
+        ]
+    }
+}
