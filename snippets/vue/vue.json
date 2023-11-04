@@ -548,5 +548,40 @@
             "<pre text-start> {{ ${1:content} }} </pre>"
         ],
         "description": "New Blank Vue Transition"
+    },
+    "Uno Class": {
+        "prefix": "ucla",
+        "body": [
+            "class=\":uno: ${1:class}\""
+        ],
+        "description": "class with :uno: tag"
+    },
+    "New Page": {
+        "prefix": "npage",
+        "body": [
+            "<template>",
+            "  <div>",
+            "\t${1: Page Name}",
+            "  </div>",
+            "</template>",
+            "",
+            "<script setup lang=\"ts\">",
+            "const title = '${1: Page Name}'",
+            "const description = '${2: Page Description}'",
+            "",
+            "useMeta(title, description)",
+            "",
+            "definePageMeta({",
+            "\ttitle: '${1: Page Name}',",
+            "\tsubtitle: '${2: Page Description}',",
+            "\talt: '',",
+            "\timgSrc: '',",
+            "\tdocumentDriven: false,",
+            "})",
+            "</script>",
+            "",
+            "<style lang=\"scss\" scoped></style>"
+        ],
+        "description": "Generate New Nuxt Page"
     }
 }
