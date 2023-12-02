@@ -39,6 +39,15 @@ return {
         indent = {
           enable = false, -- buggy :/
         },
+        incremental_selection = {
+          enable = true,
+          keymaps = {
+            init_selection = "<C-space>",
+            node_incremental = "<C-space>",
+            scope_incremental = false,
+            node_decremental = "<bs>",
+          },
+        },
         textobjects = {
           select = {
             enable = true,
@@ -88,10 +97,10 @@ return {
             },
           },
         },
-        context_commentstring = {
-          enable = true,
-          enable_autocmd = false, -- Comment.nvim takes care of this automatically
-        },
+        -- context_commentstring = {
+        --   enable = true,
+        --   enable_autocmd = false, -- Comment.nvim takes care of this automatically
+        -- },
 
         playground = {
           enable = true,

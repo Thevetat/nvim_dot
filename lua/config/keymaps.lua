@@ -47,12 +47,12 @@ map("n", "<C-Left>", "<cmd>vertical resize -2<cr>", { desc = "Decrease window wi
 map("n", "<C-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase window width" })
 
 -- Move Lines
-map("n", "<A-j>", "<cmd>m .+1<cr>==", { desc = "Move down" })
-map("n", "<A-k>", "<cmd>m .-2<cr>==", { desc = "Move up" })
-map("i", "<A-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move down" })
-map("i", "<A-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move up" })
-map("v", "<A-j>", ":m '>+1<cr>gv=gv", { desc = "Move down" })
-map("v", "<A-k>", ":m '<-2<cr>gv=gv", { desc = "Move up" })
+map("n", "<A-Down>", "<cmd>m .+1<cr>==", { desc = "Move down" })
+map("n", "<A-Up>", "<cmd>m .-2<cr>==", { desc = "Move up" })
+map("i", "<A-Down>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move down" })
+map("i", "<A-Up>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move up" })
+map("v", "<A-Down>", ":m '>+1<cr>gv=gv", { desc = "Move down" })
+map("v", "<A-Up>", ":m '<-2<cr>gv=gv", { desc = "Move up" })
 
 map("n", "<M-j>", "<cmd>m .+1<cr>==", { desc = "Move down" })
 map("n", "<M-k>", "<cmd>m .-2<cr>==", { desc = "Move up" })
