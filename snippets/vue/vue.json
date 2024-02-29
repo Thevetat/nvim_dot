@@ -583,5 +583,26 @@
             "<style lang=\"scss\" scoped></style>"
         ],
         "description": "Generate New Nuxt Page"
+    },
+    "Base page": {
+        "prefix": "pbase",
+        "body": [
+            "<template>",
+            "  <section class=\":uno: content-grid\">",
+            "\t<div>",
+            "\t  ${1:Words}",
+            "\t</div>",
+            "  </section>",
+            "</template>",
+            "",
+            "<script setup lang=\"ts\">",
+            "",
+            "</script>",
+            "",
+            "<style lang=\"scss\" scoped>",
+            "",
+            "</style>"
+        ],
+        "description": "Base Page Section"
     }
 }
