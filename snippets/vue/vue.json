@@ -589,9 +589,9 @@
         "body": [
             "<template>",
             "  <section class=\":uno: content-grid\">",
-            "\t<div>",
-            "\t  ${1:Words}",
-            "\t</div>",
+            "\t\t<div>",
+            "\t\t\t${1:Words}",
+            "\t\t</div>",
             "  </section>",
             "</template>",
             "",
