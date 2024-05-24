@@ -604,5 +604,25 @@
             "</style>"
         ],
         "description": "Base Page Section"
+    },
+    "AI Message": {
+        "prefix": "aim",
+        "body": [
+            "import type { AiMessage, AiModel } from '~/server/schemas/AiMessage'",
+            "",
+            "export function build${1:AiMessageType}(model: AiModel) {",
+            "\tconst userMessage = ``",
+            "\tconst assistantMessage = ``",
+            "",
+            "\tconst aiMessage: AiMessage = {",
+            "\t\tuserMessage,",
+            "\t\tassistantMessage,",
+            "\t\tmodel,",
+            "\t}",
+            "",
+            "\treturn aiMessage",
+            "}"
+        ],
+        "description": "Generates an AI Message"
     }
 }
