@@ -392,7 +392,7 @@ return {
 
         t = {
           name = "Trouble",
-          t = { "<cmd> TroubleToggle <CR> ", "Toggle Trouble" },
+          t = { "<cmd> Trouble diagnostics toggle<CR> ", "Toggle Trouble" },
           T = { "<cmd> TodoTrouble <CR> ", "Trouble Todos" },
           w = { "<cmd>TroubleToggle workspace_diagnostics<cr>", "Workspace Diagnostics" },
           d = { "<cmd>TroubleToggle document_diagnostics<cr>", "Document Diagnostics" },
