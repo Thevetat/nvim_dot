@@ -218,6 +218,11 @@ return {
           space = { "<cmd>Telescope buffers<cr>", "Buffers" },
         },
 
+        F = {
+          name = "Format",
+          f = { "<cmd> EslintFixAll <cr>", "EslintFixAll" },
+        },
+
         g = {
           name = "Git",
           g = { "<cmd>lua _lazygit_toggle()<CR>", "LazyGit" },
